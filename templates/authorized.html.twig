@@ -1,0 +1,35 @@
+<html>
+<head>
+<title>Чатик с бэком</title>
+<link href="favicon-16.png" rel="icon" type="image/x-icon">    
+<style>
+    body{
+        font-family: arial;
+    }
+</style>
+</head>    
+    
+<form action="/reset" method="GET">
+        <input type="submit" value="RESET MESSAGES" style="width: 250px; height: 40px; 
+        right: 8px; top: 8px; position: absolute; background-color: red; color: white;font-weight: bold;">
+</form>
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td>
+<form action="/logout" method="GET">
+    <input type="submit" value="Выход" style="width: 250px; height: 40px; margin-top:-16px;">
+</form>
+</td>
+<td>
+<form action="/show_log" method="GET">
+    <input type="submit" value="Показать лог" style="width: 250px; height: 40px; margin-top:-16px;">
+</form>
+</td>
+</tr>
+</table>
+<form action="/clear" method="GET">
+    <input type="submit" value="Очистить историю сообщений" style="width: 250px; height: 40px; margin-top:-16px;">
+</form>
+
+<b>История сообщений:</b><br><br>
+</html>

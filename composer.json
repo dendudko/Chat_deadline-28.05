@@ -1,0 +1,14 @@
+{
+    "name": "root/lab4",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "ClassOne\\": "src/",
+            "Controllers\\": "Controllers/"
+        }
+    },
+    "require": {
+        "twig/twig": "^3.0",
+        "monolog/monolog": "^2.6"
+    }
+}
