@@ -6,6 +6,7 @@ use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 
 $url = 'http://fefu.ml';
+date_default_timezone_set('Asia/Vladivostok');
 
 class Controller{
 
@@ -22,7 +23,14 @@ public function __construct(Environment $twig, Logger $logger)
     
 function print_messages(){
     $content = json_decode(file_get_contents('history.json'));
+    
+    $messagePrevDate = '01-01-1900';
     foreach($content->messages as $message){
+    if (strtotime($message->date2) != strtotime($messagePrevDate)){
+        echo ('<b>'.$message->date2.'</b><br><br>');
+    }
+    $messagePrevDate = $message->date2;
+    
     echo("<b>$message->sender</b> $message->date<br>$message->text<br><br>");
     }
 }
@@ -32,13 +40,13 @@ function add_message(){
     $message['messages'][] = [
     'text'=>$_GET['message'],
     'date'=>date('H:i', time()),
+    'date2'=>date('m-d-Y', time()),
     'sender'=>$_COOKIE['login']
     ];
     file_put_contents('history.json', json_encode($message));
     $this->logger->pushHandler($this->messengerHandler);
     $this->logger->info('New message', [
     'text'=>$_GET['message'],
-    'date'=>date('H:i', time()),
     'sender'=>$_COOKIE['login']
     ]);
 }

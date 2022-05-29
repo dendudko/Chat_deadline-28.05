@@ -1,9 +1,8 @@
 {
     "name": "root/lab4",
-    "type": "project",
     "autoload": {
         "psr-4": {
-            "ClassOne\\": "src/",
+            "Classes\\": "src/",
             "Controllers\\": "Controllers/"
         }
     },

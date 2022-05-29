@@ -69,20 +69,19 @@ if (isset($_GET['login'])&&isset($_GET['password'])) {
         <?php
     }
 }
+    
+use Classes\ClassOne;
+use Classes\SubClass\ClassTwo;
+$cOne = new ClassOne();
+$cTwo = new ClassTwo();
 
 if (isset($_COOKIE['login'])){
     $controller->authorized();
+    $cTwo->print_message();
 }
 else{
     $controller->unauthorized();
+    $cOne->print_message();
 }
-
-spl_autoload_register(function ($className) {
-    include_once __DIR__ . "/../src/" . str_replace("\\", "/", $className) . ".php";
-});
-$cOne = new ClassOne();
-$cTwo = new subsrc\ClassTwo();
-$cOne->shout();
-$cTwo->shout();
 
 ?>
